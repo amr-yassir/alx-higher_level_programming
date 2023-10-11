@@ -7,7 +7,7 @@ def print_matrix_integer(matrix=[[]]):
             print()
         for j in range(len(sub)):
             print("{:d}".format(sub[j]))
-            if j == len(sub) - 1:
+            if j is len(sub) - 1:
                 print()
             else:
                 print(" ")
