@@ -6,8 +6,5 @@ def print_matrix_integer(matrix=[[]]):
         if len(sub) == 0:
             print()
         for j in range(len(sub)):
-            print("{:d}".format(sub[j]), end="")
-            if j is len(sub) - 1:
-                print()
-            else:
-                print(" ")
+            print("{:d}".format(sub[j]), end="\n" if j is len(sub) - 1)
+        print()
