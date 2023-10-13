@@ -5,7 +5,6 @@
  * print_python_list_info - prints python list info
  * @p: PyObject
 */
-
 void print_python_list_info(PyObject *p)
 {
 	int size, alloc;
