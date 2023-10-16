@@ -1,15 +1,16 @@
+#include <stdio.h>
 #include <Python.h>
-#include <object.h>
-#include <listobject.h>
 
 /**
  * print_python_bytes - Prints bytes information
- * @p: Object
+ *
+ * @p: Python Object
+ * Return: no return
  */
 void print_python_bytes(PyObject *p)
 {
 	char *string;
-	int size, i, limit;
+	long int size, i, limit;
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -21,7 +22,7 @@ void print_python_bytes(PyObject *p)
 	size = ((PyVarObject *)(p))->ob_size;
 	string = ((PyBytesObject *)p)->ob_sval;
 
-	printf("  size: %d\n", size);
+	printf("  size: %ld\n", size);
 	printf("  trying string: %s\n", string);
 
 	if (size >= 10)
@@ -29,7 +30,7 @@ void print_python_bytes(PyObject *p)
 	else
 		limit = size + 1;
 
-	printf("  first %d bytes:", limit);
+	printf("  first %ld bytes:", limit);
 
 	for (i = 0; i < limit; i++)
 		if (string[i] >= 0)
@@ -42,11 +43,13 @@ void print_python_bytes(PyObject *p)
 
 /**
  * print_python_list - Prints list information
- * @p: Object
+ *
+ * @p: Python Object
+ * Return: no return
  */
 void print_python_list(PyObject *p)
 {
-	int size, i;
+	long int size, i;
 	PyListObject *list;
 	PyObject *obj;
 
@@ -54,13 +57,13 @@ void print_python_list(PyObject *p)
 	list = (PyListObject *)p;
 
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %d\n", size);
-	printf("[*] Allocated = %d\n", list->allocated);
+	printf("[*] Size of the Python List = %ld\n", size);
+	printf("[*] Allocated = %ld\n", list->allocated);
 
 	for (i = 0; i < size; i++)
 	{
 		obj = ((PyListObject *)p)->ob_item[i];
-		printf("Element %d: %s\n", i, ((obj)->ob_type)->tp_name);
+		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
 		if (PyBytes_Check(obj))
 			print_python_bytes(obj);
 	}
