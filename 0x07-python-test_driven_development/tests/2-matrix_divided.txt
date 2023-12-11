@@ -1,96 +1,112 @@
+The ``0-add_integer`` module
+============================
 
-How to Use 2-matrix_divided.py
-==============================
+Using ``add_integer``
+---------------------
 
-This module defines a matrix division function ``matrix_divided(matrix, div)``.
+Import function from module:
 
-Usage
-=====
+    >>> add_integer = __import__('0-add_integer').add_integer
 
-    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
-    >>> matrix = [
-    ...     [3, 6, 9],
-    ...     [12, 15, 18]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
-    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+Test one int argument:
 
-    >>> matrix = [
-    ...     [1, 2, 3],
-    ...     [4, 5, 6]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
-    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+    >>> add_integer(2)
+    100
 
-    >>> print(matrix)
-    [[1, 2, 3], [4, 5, 6]]
+Test one int argument and check default second:
 
-    >>> matrix = [
-    ...     [1.1, -2.2, 3.3],
-    ...     [4.4, 5.5, -6.6]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
-    [[0.37, -0.73, 1.1], [1.47, 1.83, -2.2]]
+    >>> add_integer(0)
+    98
 
-    >>> matrix = [
-    ...     [1, -2.2, 3, 4.4, 5],
-    ...     [-6.6, 7.00, 8, 9.999, 10]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
-    [[0.33, -0.73, 1.0, 1.47, 1.67], [-2.2, 2.33, 2.67, 3.33, 3.33]]
+Test one float:
 
-    >>> matrix = "not a list"
-    >>> print(matrix_divided(matrix, 3))
+    >>> add_integer(123.9)
+    221
+
+Test one negative float:
+
+    >>> add_integer(-95.5)
+    3
+
+Test two integers:
+
+    >>> add_integer(10, 5)
+    15
+
+Test two big integers:
+
+    >>> add_integer(999999998, 999999999)
+    1999999997
+
+Test positive, negative integers:
+
+    >>> add_integer(34263478, -89234582395)
+    -89200318917
+
+Test negative, positive integers:
+
+    >>> add_integer(-13947692, 57234)
+    -13890458
+
+Test an integer and a float:
+
+    >>> add_integer(123, 7.987)
+    130
+
+Test a float and an integer:
+
+    >>> add_integer(234234.43545, 4352345)
+    4586579
+
+Test two floats:
+
+    >>> add_integer(0.9, 0.9)
+    0
+
+Add infinity:
+
+    >>> add_integer(float('inf'), float('-inf'))
     Traceback (most recent call last):
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    ...
+    OverflowError: cannot convert float infinity to integer
 
-    >>> matrix = None
-    >>> print(matrix_divided(matrix, 3))
+Add nan:
+
+    >>> add_integer(0, float('nan'))
     Traceback (most recent call last):
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    ...
+    ValueError: cannot convert float NaN to integer
 
-    >>> matrix = []
-    >>> print(matrix_divided(matrix, 3))
+Test first arg invalid:
+
+    >>> add_integer("foo", 0)
     Traceback (most recent call last):
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+        ...
+    TypeError: a must be an integer
 
-    >>> matrix = [[]]
-    >>> print(matrix_divided(matrix, 3))
-    [[]]
+Test second arg invalid:
 
-    >>> matrix = [1, 2, 3]
-    >>> print(matrix_divided(matrix, 3))
+    >>> add_integer(123123, [])
     Traceback (most recent call last):
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+        ...
+    TypeError: b must be an integer
 
-    >>> matrix = [
-    ...     [1, 2, 3],
-    ...     [4, "not a number", 6]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
-    Traceback (most recent call last):
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+Test both args invalid:
 
-    >>> matrix = [
-    ...     [1, 2, 3, 4],
-    ...     [5, 6, 7]
-    ... ]
-    >>> print(matrix_divided(matrix, 3))
+    >>> add_integer(None, None)
     Traceback (most recent call last):
-    TypeError: Each row of the matrix must have the same size
+        ...
+    TypeError: a must be an integer
 
-    >>> matrix = [
-    ...     [1, 2, 3],
-    ...     [4, 5, 6]
-    ... ]
-    >>> print(matrix_divided(matrix, "not a number"))
-    Traceback (most recent call last):
-    TypeError: div must be a number
+Test two strings:
 
-    >>> print(matrix_divided(matrix, None))
+    >>> add_integer("foo", "bar")
     Traceback (most recent call last):
-    TypeError: div must be a number
+        ...
+    TypeError: a must be an integer
 
-    >>> print(matrix_divided(matrix, 0))
+Test float overflow:
+    >>> add_integer(float('inf'), 0)
     Traceback (most recent call last):
-    ZeroDivisionError: division by zero
+    ...
+    OverflowError: cannot convert float infinity to integer
