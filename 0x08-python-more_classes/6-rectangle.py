@@ -8,7 +8,7 @@ class Rectangle:
         """Initialization"""
         self.width = width
         self.height = height
-        self.number_of_instances = number_of_instances
+        self.number_of_instances += 1
 
     @property
     def width(self):
