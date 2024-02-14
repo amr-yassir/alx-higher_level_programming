@@ -4,11 +4,14 @@
 
 class Rectangle:
     """ Represents a rectangle """
-    def __init__(self, width=0, height=0, number_of_instances=0):
+
+    number_of_instances = 0
+
+    def __init__(self, width=0, height=0):
         """Initialization"""
         self.width = width
         self.height = height
-        self.number_of_instances += 1
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -62,5 +65,5 @@ class Rectangle:
 
     def __del__(self):
         """prints a farewell message"""
-        self.number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
