@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for is_kind_of_class method"""
+"""is_kind_of_class module"""
 
 
 def is_kind_of_class(obj, a_class):
