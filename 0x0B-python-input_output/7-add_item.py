@@ -14,4 +14,4 @@ except Exception:
     data = []
 
 data.extend(arg_list)
-save_tojson_file(data, 'add_item.json')
+save_to_json_file(data, 'add_item.json')
