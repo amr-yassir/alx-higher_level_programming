@@ -14,7 +14,7 @@ class Student:
         '''returns a dictionary representation'''
         try:
             for attr in attrs:
-                if type(attr) is not int:
+                if type(attr) is not str:
                     return self.__dict__
         except Exception:
             return self.__dict__
