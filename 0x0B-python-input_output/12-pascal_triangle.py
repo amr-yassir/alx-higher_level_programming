@@ -14,5 +14,5 @@ def pascal_triangle(n):
         for i in range(len(list_t) - 1):
             temp.append(list_t[i] + list_t[i + 1])
         temp.append(1)
-        list_t.append(temp)
-    return list_t
+        list_n.append(temp)
+    return list_n
